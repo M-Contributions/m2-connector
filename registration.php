@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /**
- * Gateway Trait
+ * Registration File
  * @category    Ticaje
  * @package     Ticaje_Connector
  * @author      Hector Luis Barrientos <ticaje@filetea.me>
