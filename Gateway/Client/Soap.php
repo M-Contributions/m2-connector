@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Ticaje\Connector\Gateway\Client;
 
-use Ticaje\Connector\Interfaces\AuthenticatorInterface;
 use Ticaje\Connector\Interfaces\Protocol\SoapClientInterface;
 
 /**
@@ -19,21 +18,6 @@ use Ticaje\Connector\Interfaces\Protocol\SoapClientInterface;
  */
 class Soap extends Base implements SoapClientInterface
 {
-    protected $clientFactory;
-
-    /**
-     * Soap constructor.
-     * @param AuthenticatorInterface $authenticator
-     * @param $clientFactory
-     */
-    public function __construct(
-        AuthenticatorInterface $authenticator,
-        $clientFactory
-    ) {
-        parent::__construct($authenticator);
-        $this->clientFactory = $clientFactory;
-    }
-
     /**
      * @inheritDoc
      */

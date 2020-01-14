@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace Ticaje\Connector\Gateway\Client;
 
-use Ticaje\Base\Application\Factory\FactoryInterface;
-use Ticaje\Connector\Interfaces\AuthenticatorInterface;
 use Ticaje\Connector\Interfaces\Protocol\RestClientInterface;
 use Ticaje\Connector\Traits\Gateway\Client\Rest as RestTrait;
 
@@ -23,22 +21,7 @@ class Rest extends Base implements RestClientInterface
 {
     use RestTrait;
 
-    protected $clientFactory;
-
     protected $accessToken;
-
-    /**
-     * Rest constructor.
-     * @param AuthenticatorInterface $authenticator
-     * @param $clientFactory
-     */
-    public function __construct(
-        AuthenticatorInterface $authenticator,
-        FactoryInterface $clientFactory
-    ) {
-        $this->clientFactory = $clientFactory;
-        parent::__construct($authenticator);
-    }
 
     /**
      * @inheritDoc
