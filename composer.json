@@ -15,7 +15,8 @@
   "require": {
     "php": "~7.1.3||~7.2.0||~7.3.0",
     "magento/product-community-edition": "*",
-    "ticaje/base": "^1.0"
+    "ticaje/base": "^1.0",
+    "ticaje/m2-contract": "^1.0"
   },
   "repositories": [
     {

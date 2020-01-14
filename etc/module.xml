@@ -3,5 +3,6 @@
     <module name="Ticaje_Connector" setup_version="0.0.1"/>
     <sequence>
         <module name="Ticaje_Base"/>
+        <module name="Ticaje_Contract"/>
     </sequence>
 </config>
