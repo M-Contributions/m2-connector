@@ -34,9 +34,16 @@
         </arguments>
     </virtualType>
 
+    <virtualType name="Ticaje\Connector\Gateway\Client\Decorator\Responder" type="Ticaje\Contract\Patterns\Implementation\Decorator\Responder">
+        <arguments>
+            <argument name="response" xsi:type="object">Ticaje\Contract\Patterns\Implementation\Decorator\Responder\Response</argument>
+        </arguments>
+    </virtualType>
+
     <type name="Ticaje\Connector\Gateway\Client\Rest">
         <arguments>
             <argument name="authenticator" xsi:type="object">Ticaje\Connector\Gateway\Authenticator\Oauth</argument>
+            <argument name="responder" xsi:type="object">Ticaje\Connector\Gateway\Client\Decorator\Responder</argument>
             <argument name="clientFactory" xsi:type="object">Ticaje\Connector\Factory\Client\Rest\GuzzleClientFactory</argument>
         </arguments>
     </type>
