@@ -14,6 +14,7 @@ use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
 use Ticaje\Connector\Interfaces\Protocol\RestClientInterface;
+use Ticaje\Contract\Patterns\Interfaces\Decorator\ResponderInterface;
 
 /**
  * Trait Rest
@@ -44,20 +45,22 @@ trait Rest
             );
             $promise->then(
                 function (ResponseInterface $response) use (&$result) {
-                    $result['response'] = $response->getBody()->getContents();
-                    $result['success'] = true;
+                    $result[ResponderInterface::CONTENT_KEY] = $response->getBody()->getContents();
+                    $result[ResponderInterface::SUCCESS_KEY] = true;
+                    $result[ResponderInterface::MESSAGE_KEY] = 'Response correctly received'; // Perhaps normalize this message
                     return $result;
                 },
                 function (RuntimeException $exception) {
+                    // Missing implementation
                 }
             );
             $promise->wait();
         } catch (\Exception $exception) {
-            $result['success'] = false;
-            $result['message'] = $exception->getMessage();
-            $result = json_encode($result);
+            $result[ResponderInterface::CONTENT_KEY] = null;
+            $result[ResponderInterface::SUCCESS_KEY] = false;
+            $result[ResponderInterface::MESSAGE_KEY] = $exception->getMessage();
         }
-        return $result;
+        return $this->responder->process($result);
     }
 
     /**
@@ -71,7 +74,7 @@ trait Rest
     {
         $result = [];
         try {
-            $result = $this->client->request(
+            $result[ResponderInterface::CONTENT_KEY] = $this->client->request(
                 $verb,
                 $endpoint,
                 [
@@ -79,12 +82,14 @@ trait Rest
                     $this->getFormRequestKey($verb, $headers) => $params
                 ]
             )->getBody()->getContents();
+            $result[ResponderInterface::SUCCESS_KEY] = true;
+            $result[ResponderInterface::MESSAGE_KEY] = 'Response correctly received'; // Perhaps normalize this message
         } catch (\Exception $exception) {
-            $result['success'] = false;
-            $result['message'] = $exception->getMessage();
-            $result = json_encode($result);
+            $result[ResponderInterface::CONTENT_KEY] = null;
+            $result[ResponderInterface::SUCCESS_KEY] = false;
+            $result[ResponderInterface::MESSAGE_KEY] = $exception->getMessage();
         }
-        return $result;
+        return $this->responder->process($result);
     }
 
     /**
