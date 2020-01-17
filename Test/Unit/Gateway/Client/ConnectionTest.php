@@ -32,14 +32,4 @@ class ConnectionTest extends BaseTest
     {
         $this->assertInstanceOf(RestClientInterface::class, $this->client);
     }
-
-    public function testAuthenticate()
-    {
-        $this->assertNull($this->client->authenticate([]), 'Assert that passing no credentials returns null');
-    }
-
-    public function testGenerateClient()
-    {
-        $this->assertNull($this->client->generateClient([]), 'Assert that passing no credentials returns null');
-    }
 }
