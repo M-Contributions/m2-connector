@@ -25,16 +25,4 @@ interface ClientInterface
     const CONTENT_TYPE_FORM_URLENCODED = 'application/x-www-form-urlencoded';
 
     const CONTENT_TYPE_KEY = 'Content-Type';
-
-    /**
-     * @param $credentials
-     * @return mixed
-     */
-    public function generateClient($credentials);
-
-    /**
-     * @param $credentials
-     * @return mixed
-     */
-    public function authenticate($credentials);
 }

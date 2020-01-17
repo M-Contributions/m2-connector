@@ -8,11 +8,11 @@ declare(strict_types=1);
  * @author      Hector Luis Barrientos <ticaje@filetea.me>
  */
 
-namespace Ticaje\Connector\Interfaces;
+namespace Ticaje\Connector\Interfaces\Provider\Authentication;
 
 /**
  * Interface SimpleAuthenticatorInterface
- * @package Ticaje\Connector\Interfaces
+ * @package Ticaje\Connector\Interfaces\Provider\Authentication
  */
 interface SimpleAuthenticatorInterface
 {
@@ -21,9 +21,4 @@ interface SimpleAuthenticatorInterface
      * @return mixed
      */
     public function authenticate(array $credentials);
-
-    /**
-     * @return mixed
-     */
-    public function generateClients();
 }
