@@ -1,33 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
-    <virtualType name="Ticaje\Connector\Factory\Authenticator\Oauth\ClientCredentialsFactory" type="Ticaje\Connector\Factory\Base">
-        <arguments>
-            <argument name="instanceName" xsi:type="string">\kamermans\OAuth2\GrantType\ClientCredentials</argument>
-        </arguments>
-    </virtualType>
-
-    <virtualType name="Ticaje\Connector\Factory\Authenticator\Oauth\ClientFactory" type="Ticaje\Connector\Factory\Base">
-        <arguments>
-            <argument name="instanceName" xsi:type="string">\GuzzleHttp\Client</argument>
-        </arguments>
-    </virtualType>
-
-    <virtualType name="Ticaje\Connector\Factory\Authenticator\Oauth\OAuth2MiddlewareFactory" type="Ticaje\Connector\Factory\Base">
-        <arguments>
-            <argument name="instanceName" xsi:type="string">\kamermans\OAuth2\OAuth2Middleware</argument>
-        </arguments>
-    </virtualType>
-
-    <type name="Ticaje\Connector\Gateway\Authenticator\Oauth">
-        <arguments>
-            <argument name="authType" xsi:type="string">oauth</argument>
-            <argument name="oauthClientFactory" xsi:type="object">Ticaje\Connector\Factory\Authenticator\Oauth\ClientFactory</argument>
-            <argument name="clientCredentialsFactory" xsi:type="object">Ticaje\Connector\Factory\Authenticator\Oauth\ClientCredentialsFactory</argument>
-            <argument name="oAuth2MiddlewareFactory" xsi:type="object">Ticaje\Connector\Factory\Authenticator\Oauth\OAuth2MiddlewareFactory</argument>
-        </arguments>
-    </type>
-
     <virtualType name="Ticaje\Connector\Factory\Client\Rest\GuzzleClientFactory" type="Ticaje\Connector\Factory\Base">
         <arguments>
             <argument name="instanceName" xsi:type="string">\GuzzleHttp\Client</argument>
@@ -42,7 +15,6 @@
 
     <type name="Ticaje\Connector\Gateway\Client\Rest">
         <arguments>
-            <argument name="authenticator" xsi:type="object">Ticaje\Connector\Gateway\Authenticator\Oauth</argument>
             <argument name="responder" xsi:type="object">Ticaje\Connector\Gateway\Client\Decorator\Responder</argument>
             <argument name="clientFactory" xsi:type="object">Ticaje\Connector\Factory\Client\Rest\GuzzleClientFactory</argument>
         </arguments>
