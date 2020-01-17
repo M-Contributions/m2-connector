@@ -11,9 +11,8 @@ declare(strict_types=1);
 namespace Ticaje\Connector\Gateway\Client;
 
 use Ticaje\Base\Application\Factory\FactoryInterface;
-use Ticaje\Connector\Interfaces\AuthenticatorInterface;
-use Ticaje\Connector\Interfaces\ClientInterface;
 use Ticaje\Contract\Patterns\Interfaces\Decorator\ResponderInterface;
+use Ticaje\Connector\Interfaces\ClientInterface;
 
 /**
  * Class Base
@@ -31,36 +30,14 @@ abstract class Base implements ClientInterface
 
     /**
      * Base constructor.
-     * @param AuthenticatorInterface $authenticator
      * @param ResponderInterface $responder
      * @param FactoryInterface $clientFactory
      */
     public function __construct(
-        AuthenticatorInterface $authenticator,
         ResponderInterface $responder,
         FactoryInterface $clientFactory
     ) {
-        $this->authenticator = $authenticator;
         $this->responder = $responder;
         $this->clientFactory = $clientFactory;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function authenticate($credentials)
-    {
-        $permission = null;
-        try {
-            $this->authenticator->authenticate($credentials);
-            $permission = $this->authenticator->getPermission();
-        } catch (\Exception $exception) {
-        }
-        return $permission;
-    }
-
-    public function getAuthOptions()
-    {
-        return $this->authenticator->generateAuthOptions();
     }
 }

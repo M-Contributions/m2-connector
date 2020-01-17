@@ -28,10 +28,6 @@ class Rest extends Base implements RestClientInterface
      */
     public function generateClient($credentials)
     {
-        $this->accessToken = $this->accessToken ?: $this->authenticate($credentials);
-        if (!$this->accessToken) {
-            return null;
-        }
         // If auth problems the log and return void
         $this->client = $this->clientFactory->create([
             'config' => [ // Playing a little bit with Magento rules by passing config key, must ve refactored
