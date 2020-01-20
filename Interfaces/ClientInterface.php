@@ -25,4 +25,6 @@ interface ClientInterface
     const CONTENT_TYPE_FORM_URLENCODED = 'application/x-www-form-urlencoded';
 
     const CONTENT_TYPE_KEY = 'Content-Type';
+
+    const BASE_URI_KEY = 'base_uri';
 }

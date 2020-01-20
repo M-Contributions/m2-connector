@@ -17,6 +17,7 @@
         <arguments>
             <argument name="responder" xsi:type="object">Ticaje\Connector\Gateway\Client\Decorator\Responder</argument>
             <argument name="clientFactory" xsi:type="object">Ticaje\Connector\Factory\Client\Rest\GuzzleClientFactory</argument>
+            <argument name="baseUriKey" xsi:type="string">base_uri</argument>
         </arguments>
     </type>
 

@@ -10,8 +10,10 @@ declare(strict_types=1);
 
 namespace Ticaje\Connector\Gateway\Client;
 
+use Ticaje\Base\Application\Factory\FactoryInterface;
 use Ticaje\Connector\Interfaces\Protocol\RestClientInterface;
 use Ticaje\Connector\Traits\Gateway\Client\Rest as RestTrait;
+use Ticaje\Contract\Patterns\Interfaces\Decorator\ResponderInterface;
 
 /**
  * Class Rest
@@ -23,6 +25,23 @@ class Rest extends Base implements RestClientInterface
 
     protected $accessToken;
 
+    protected $baseUriKey;
+
+    /**
+     * Rest constructor.
+     * @param ResponderInterface $responder
+     * @param FactoryInterface $clientFactory
+     * @param string $baseUriKey
+     */
+    public function __construct(
+        ResponderInterface $responder,
+        FactoryInterface $clientFactory,
+        string $baseUriKey
+    ) {
+        $this->baseUriKey = $baseUriKey;
+        parent::__construct($responder, $clientFactory);
+    }
+
     /**
      * @inheritDoc
      */
@@ -31,7 +50,7 @@ class Rest extends Base implements RestClientInterface
         // If auth problems the log and return void
         $this->client = $this->clientFactory->create([
             'config' => [ // Playing a little bit with Magento rules by passing config key, must ve refactored
-                'base_uri' => $credentials['base_uri']
+                $this->baseUriKey => $credentials[self::BASE_URI_KEY]
             ]
         ]);
         return $this->client;
