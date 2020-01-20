@@ -25,7 +25,7 @@ class ConnectionTest extends BaseTest
     public function setUp()
     {
         parent::setUp();
-        $this->client = $this->objectManager->getObject(Rest::class);
+        $this->client = $this->objectManager->getObject(Rest::class, ['baseUriKey' => RestClientInterface::BASE_URI_KEY]);
     }
 
     public function testInstantiateRestClient()
