@@ -21,4 +21,12 @@
         </arguments>
     </type>
 
+    <type name="Ticaje\Connector\Gateway\Provider\Token\Token">
+        <arguments>
+            <argument name="connector" xsi:type="object">Ticaje\Connector\Gateway\Client\Rest</argument>
+            <argument name="endpoint" xsi:type="string">endpoint</argument>
+            <argument name="verb" xsi:type="string">GET</argument>
+        </arguments>
+    </type>
+
 </config>
