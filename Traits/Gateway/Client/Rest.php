@@ -101,7 +101,7 @@ trait Rest
     {
         // The values should also be constantized
         $key = $verb ? 'query' : 'form_params';
-        $key = $headers[RestClientInterfac::CONTENT_TYPE_KEY] == RestClientInterface::CONTENT_TYPE_JSON ? 'json' : $key;
+        $key = $headers[RestClientInterface::CONTENT_TYPE_KEY] == RestClientInterface::CONTENT_TYPE_JSON ? 'json' : $key;
         return $key;
     }
 }
