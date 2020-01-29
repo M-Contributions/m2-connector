@@ -20,8 +20,6 @@ use Ticaje\Connector\Interfaces\ClientInterface;
  */
 abstract class Base implements ClientInterface
 {
-    protected $authenticator;
-
     protected $client;
 
     protected $clientFactory;
