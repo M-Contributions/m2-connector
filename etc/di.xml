@@ -13,6 +13,19 @@
         </arguments>
     </virtualType>
 
+    <virtualType name="Ticaje\Connector\Factory\Client\Ftp\FtpClientFactory" type="Ticaje\Connector\Factory\Base">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">\phpseclib\Net\SFTP</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Ticaje\Connector\Gateway\Client\Ftp">
+        <arguments>
+            <argument name="responder" xsi:type="object">Ticaje\Connector\Gateway\Client\Decorator\Responder</argument>
+            <argument name="clientFactory" xsi:type="object">Ticaje\Connector\Factory\Client\Ftp\FtpClientFactory</argument>
+        </arguments>
+    </type>
+
     <type name="Ticaje\Connector\Gateway\Client\Rest">
         <arguments>
             <argument name="responder" xsi:type="object">Ticaje\Connector\Gateway\Client\Decorator\Responder</argument>

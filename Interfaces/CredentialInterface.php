@@ -17,8 +17,14 @@ namespace Ticaje\Connector\Interfaces;
 interface CredentialInterface
 {
     /**
-     * @param array $params
+     * @param array $credentials
      * @return CredentialInterface
      */
-    public function setParams(array $params): CredentialInterface;
+    public function set(array $credentials): CredentialInterface;
+
+    /**
+     * @return mixed
+     * Returns credentials as associative array
+     */
+    public function getAll(): array;
 }

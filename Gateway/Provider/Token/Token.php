@@ -12,7 +12,6 @@ namespace Ticaje\Connector\Gateway\Provider\Token;
 
 use Ticaje\Connector\Gateway\Provider\Base;
 use Ticaje\Connector\Interfaces\ClientInterface;
-use Ticaje\Connector\Interfaces\CredentialInterface;
 use Ticaje\Connector\Interfaces\Provider\Token\TokenProviderInterface;
 use Ticaje\Contract\Patterns\Interfaces\Decorator\Responder\ResponseInterface;
 
@@ -20,7 +19,7 @@ use Ticaje\Contract\Patterns\Interfaces\Decorator\Responder\ResponseInterface;
  * Class Token
  * @package Ticaje\Connector\Gateway\Provider\Token
  */
-class Token extends Base implements TokenProviderInterface, CredentialInterface
+class Token extends Base implements TokenProviderInterface
 {
     protected $accessToken;
 
@@ -67,7 +66,7 @@ class Token extends Base implements TokenProviderInterface, CredentialInterface
      * @inheritDoc
      * Perhaps using composition on this might be a cleaner way
      */
-    public function setParams(array $params): CredentialInterface
+    public function setParams(array $params): TokenProviderInterface
     {
         $this->params = $params;
         return $this;

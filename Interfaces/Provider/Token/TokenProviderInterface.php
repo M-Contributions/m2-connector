@@ -7,6 +7,7 @@ declare(strict_types=1);
  * @package     Ticaje_Connector
  * @author      Hector Luis Barrientos <ticaje@filetea.me>
  */
+
 namespace Ticaje\Connector\Interfaces\Provider\Token;
 
 /**
@@ -15,6 +16,12 @@ namespace Ticaje\Connector\Interfaces\Provider\Token;
  */
 interface TokenProviderInterface
 {
+    /**
+     * @param array $params
+     * @return TokenProviderInterface
+     */
+    public function setParams(array $params): TokenProviderInterface;
+
     /**
      * @return mixed
      */
