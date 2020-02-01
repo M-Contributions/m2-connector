@@ -20,6 +20,7 @@ use Ticaje\Base\Test\Unit\BaseTest as ParentClass;
  */
 class BaseTest extends ParentClass
 {
+    /** @var ObjectManager $objectManager */
     protected $objectManager;
 
     public function setUp()
