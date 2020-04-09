@@ -26,6 +26,7 @@
         </arguments>
     </type>
 
+    <!-- It's a must that modules implementing this approach must create virtual types in order to avoid collision -->
     <type name="Ticaje\Connector\Gateway\Client\Rest">
         <arguments>
             <argument name="responder" xsi:type="object">Ticaje\Connector\Gateway\Client\Decorator\Responder</argument>
@@ -39,6 +40,7 @@
             <argument name="connector" xsi:type="object">Ticaje\Connector\Gateway\Client\Rest</argument>
             <argument name="endpoint" xsi:type="string">endpoint</argument>
             <argument name="verb" xsi:type="string">GET</argument>
+            <argument name="baseUri" xsi:type="string">https://url/</argument>
         </arguments>
     </type>
 

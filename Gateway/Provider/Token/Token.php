@@ -27,20 +27,26 @@ class Token extends Base implements TokenProviderInterface
 
     protected $endpoint;
 
+    protected $baseUri;
+
     /**
      * Token constructor.
      * @param ClientInterface $connector
      * @param string $endpoint
      * @param string $verb
+     * @param string $baseUri
      */
     public function __construct(
         ClientInterface $connector,
         string $endpoint,
-        string $verb
+        string $verb,
+        string $baseUri
     ) {
         $this->verb = $verb;
         $this->endpoint = $endpoint;
+        $this->baseUri = $baseUri;
         parent::__construct($connector);
+        $this->initialize([ClientInterface::BASE_URI_KEY => $this->baseUri]);
     }
 
     /**
